@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Sruthi | ECE Student & Aspiring Software Engineer</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #080b18;
+            color: #f5f7ff;
+            line-height: 1.6;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        /* NAVBAR */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(8, 11, 24, 0.95);
+            border-bottom: 1px solid #222842;
+            padding: 18px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #8b5cf6;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 28px;
+        }
+
+        nav ul li a {
+            color: #cbd5e1;
+            transition: 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #8b5cf6;
+        }
+
+        /* HERO */
+        .hero {
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 60px;
+            padding: 80px 10%;
+            background:
+                radial-gradient(circle at 80% 30%, rgba(124, 58, 237, 0.18), transparent 30%),
+                radial-gradient(circle at 20% 70%, rgba(59, 130, 246, 0.12), transparent 30%);
+        }
+
+        .hero-text {
+            max-width: 650px;
+        }
+
+        .hero-text p:first-child {
+            color: #8b5cf6;
+            font-weight: bold;
+            font-size: 18px;
+            margin-bottom: 12px;
+        }
+
+        .hero h1 {
+            font-size: clamp(45px, 7vw, 78px);
+            line-height: 1.05;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 span {
+            color: #8b5cf6;
+        }
+
+        .hero h2 {
+            color: #cbd5e1;
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        .hero-description {
+            color: #94a3b8;
+            font-size: 18px;
+            max-width: 600px;
+            margin-bottom: 30px;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 13px 24px;
+            border-radius: 8px;
+            border: 1px solid #8b5cf6;
+            transition: 0.3s;
+            font-weight: bold;
+        }
+
+        .primary {
+            background: #7c3aed;
+        }
+
+        .primary:hover {
+            background: #6d28d9;
+            transform: translateY(-2px);
+        }
+
+        .secondary {
+            color: #c4b5fd;
+        }
+
+        .secondary:hover {
+            background: #18152d;
+        }
+
+        /* PROFILE IMAGE */
+        .profile-container {
+            position: relative;
+        }
+
+        .profile-container img {
+            width: 280px;
+            height: 280px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 4px solid #8b5cf6;
+            box-shadow: 0 0 50px rgba(124, 58, 237, 0.35);
+        }
+
+        /* SECTIONS */
+        section {
+            padding: 90px 10%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 38px;
+            margin-bottom: 10px;
+        }
+
+        .section-title span {
+            color: #8b5cf6;
+        }
+
+        .section-title p {
+            color: #94a3b8;
+        }
+
+        /* ABOUT */
+        .about-box {
+            max-width: 900px;
+            margin: auto;
+            background: #101426;
+            border: 1px solid #252b45;
+            border-radius: 16px;
+            padding: 35px;
+        }
+
+        .about-box p {
+            color: #cbd5e1;
+            font-size: 17px;
+            margin-bottom: 15px;
+        }
+
+        /* SKILLS */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 18px;
+            max-width: 1000px;
+            margin: auto;
+        }
+
+        .skill {
+            background: #101426;
+            border: 1px solid #252b45;
+            padding: 22px;
+            border-radius: 12px;
+            text-align: center;
+            transition: 0.3s;
+        }
+
+        .skill:hover {
+            transform: translateY(-5px);
+            border-color: #8b5cf6;
+            box-shadow: 0 10px 30px rgba(124, 58, 237, 0.12);
+        }
+
+        .skill h3 {
+            color: #e2e8f0;
+        }
+
+        .skill p {
+            color: #94a3b8;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+
+        /* PROJECTS */
+        .projects {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .project-card {
+            background: #101426;
+            border: 1px solid #252b45;
+            padding: 30px;
+            border-radius: 16px;
+            transition: 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-7px);
+            border-color: #8b5cf6;
+        }
+
+        .project-number {
+            color: #8b5cf6;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .project-card h3 {
+            font-size: 23px;
+            margin: 10px 0;
+        }
+
+        .project-card p {
+            color: #94a3b8;
+            margin-bottom: 18px;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .tag {
+            background: #1a1b35;
+            color: #a78bfa;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 12px;
+        }
+
+        /* EXPERIENCE */
+        .timeline {
+            max-width: 900px;
+            margin: auto;
+        }
+
+        .timeline-item {
+            background: #101426;
+            border-left: 3px solid #8b5cf6;
+            padding: 25px;
+            margin-bottom: 20px;
+            border-radius: 0 12px 12px 0;
+        }
+
+        .timeline-item h3 {
+            margin-bottom: 5px;
+        }
+
+        .timeline-item .date {
+            color: #8b5cf6;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        .timeline-item p {
+            color: #94a3b8;
+        }
+
+        /* EDUCATION */
+        .education-box {
+            max-width: 850px;
+            margin: auto;
+            background: #101426;
+            border: 1px solid #252b45;
+            border-radius: 16px;
+            padding: 30px;
+        }
+
+        .education-box h3 {
+            color: #c4b5fd;
+            margin-bottom: 8px;
+        }
+
+        .education-box p {
+            color: #94a3b8;
+            margin-bottom: 6px;
+        }
+
+        /* CONTACT */
+        .contact {
+            text-align: center;
+            background: #0d1020;
+        }
+
+        .contact p {
+            color: #94a3b8;
+            margin-bottom: 25px;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        /* FOOTER */
+        footer {
+            text-align: center;
+            padding: 25px;
+            border-top: 1px solid #222842;
+            color: #64748b;
+            font-size: 14px;
+        }
+
+        /* MOBILE */
+        @media (max-width: 768px) {
+
+            nav {
+                padding: 15px 5%;
+            }
+
+            nav ul {
+                display: none;
+            }
+
+            .hero {
+                text-align: center;
+                flex-direction: column-reverse;
+                padding: 70px 6%;
+            }
+
+            .hero-description {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .buttons {
+                justify-content: center;
+            }
+
+            .profile-container img {
+                width: 220px;
+                height: 220px;
+            }
+
+            section {
+                padding: 70px 6%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav>
+        <div class="logo">Sruthi.</div>
+
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+
+    <!-- HERO -->
+    <section class="hero">
+
+        <div class="hero-text">
+
+            <p>Hello, I'm</p>
+
+            <h1>Sruthi <span>.</span></h1>
+
+            <h2>ECE Student & Aspiring Software Engineer</h2>
+
+            <p class="hero-description">
+                Electronics and Communication Engineering student interested
+                in software development, web technologies, and building
+                practical solutions through technology.
+            </p>
+
+            <div class="buttons">
+                <a href="#projects" class="btn primary">View My Projects</a>
+                <a href="#contact" class="btn secondary">Contact Me</a>
+            </div>
+
+        </div>
+
+
+        <div class="profile-container">
+
+            <!-- Upload your photo as profile.jpg -->
+            <img src="profile.jpg" alt="Sruthi">
+
+        </div>
+
+    </section>
+
+
+    <!-- ABOUT -->
+    <section id="about">
+
+        <div class="section-title">
+            <h2>About <span>Me</span></h2>
+            <p>A little about my journey</p>
+        </div>
+
+        <div class="about-box">
+
+            <p>
+                I am a third-year Electronics and Communication Engineering
+                student pursuing a Bachelor of Engineering degree, with an
+                expected graduation in 2028.
+            </p>
+
+            <p>
+                My interests include software development, web development,
+                databases, and problem solving. I enjoy learning new
+                technologies and applying them to real-world projects.
+            </p>
+
+            <p>
+                Along with software development, I am also exploring
+                hardware-oriented areas such as Verilog Design and Embedded C
+                to build a strong foundation as an ECE engineer.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- SKILLS -->
+    <section id="skills">
+
+        <div class="section-title">
+            <h2>Technical <span>Skills</span></h2>
+            <p>Technologies and skills I'm developing</p>
+        </div>
+
+        <div class="skills-grid">
+
+            <div class="skill">
+                <h3>Python</h3>
+                <p>Programming</p>
+            </div>
+
+            <div class="skill">
+                <h3>Java</h3>
+                <p>Programming</p>
+            </div>
+
+            <div class="skill">
+                <h3>SQL</h3>
+                <p>Database Fundamentals</p>
+            </div>
+
+            <div class="skill">
+                <h3>HTML</h3>
+                <p>Frontend</p>
+            </div>
+
+            <div class="skill">
+                <h3>CSS</h3>
+                <p>Frontend</p>
+            </div>
+
+            <div class="skill">
+                <h3>JavaScript</h3>
+                <p>Web Development</p>
+            </div>
+
+            <div class="skill">
+                <h3>Flask</h3>
+                <p>Backend Development</p>
+            </div>
+
+            <div class="skill">
+                <h3>MySQL</h3>
+                <p>Database</p>
+            </div>
+
+            <div class="skill">
+                <h3>Git & GitHub</h3>
+                <p>Version Control</p>
+            </div>
+
+            <div class="skill">
+                <h3>Verilog</h3>
+                <p>Learning</p>
+            </div>
+
+            <div class="skill">
+                <h3>Embedded C</h3>
+                <p>Learning</p>
+            </div>
+
+            <div class="skill">
+                <h3>Problem Solving</h3>
+                <p>Core Skill</p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- PROJECTS -->
+    <section id="projects">
+
+        <div class="section-title">
+            <h2>Featured <span>Projects</span></h2>
+            <p>Some of the projects I've worked on</p>
+        </div>
+
+        <div class="projects">
+
+            <!-- PROJECT 1 -->
+            <div class="project-card">
+
+                <div class="project-number">01 — AI / EdTech</div>
+
+                <h3>SkillPath AI</h3>
+
+                <p>
+                    An AI-powered personalized learning path generator
+                    designed to recommend learning pathways based on skills,
+                    career requirements, and labor-market context.
+                </p>
+
+                <div class="tags">
+                    <span class="tag">AI</span>
+                    <span class="tag">Python</span>
+                    <span class="tag">Flask</span>
+                    <span class="tag">MySQL</span>
+                    <span class="tag">Machine Learning</span>
+                </div>
+
+            </div>
+
+
+            <!-- PROJECT 2 -->
+            <div class="project-card">
+
+                <div class="project-number">02 — Team Project</div>
+
+                <h3>Talent_Link</h3>
+
+                <p>
+                    A freelancer-client platform developed as part of the
+                    Infosys Springboard Virtual Internship 6.0, supporting
+                    projects, proposals, contracts, and communication.
+                </p>
+
+                <div class="tags">
+                    <span class="tag">SQL</span>
+                    <span class="tag">Database</span>
+                    <span class="tag">Web Development</span>
+                    <span class="tag">Team Project</span>
+                </div>
+
+            </div>
+
+
+            <!-- PROJECT 3 -->
+            <div class="project-card">
+
+                <div class="project-number">03 — Web Project</div>
+
+                <h3>Founder Friendly AI</h3>
+
+                <p>
+                    A web-based startup idea validator that evaluates ideas
+                    using factors such as target users, market potential,
+                    feasibility, budget, and profit considerations.
+                </p>
+
+                <div class="tags">
+                    <span class="tag">HTML</span>
+                    <span class="tag">CSS</span>
+                    <span class="tag">JavaScript</span>
+                    <span class="tag">Web Development</span>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- EXPERIENCE -->
+    <section id="experience">
+
+        <div class="section-title">
+            <h2>Internship & <span>Training</span></h2>
+            <p>Industry exposure and practical learning</p>
+        </div>
+
+        <div class="timeline">
+
+            <div class="timeline-item">
+
+                <h3>Infosys Springboard — Virtual Internship 6.0</h3>
+
+                <div class="date">
+                    3 Months | Online
+                </div>
+
+                <p>
+                    Completed a virtual internship involving collaborative
+                    project development, database work, and practical
+                    software development activities.
+                </p>
+
+            </div>
+
+
+            <div class="timeline-item">
+
+                <h3>BSNL Trichy — In-Plant Training</h3>
+
+                <div class="date">
+                    2025 | Offline
+                </div>
+
+                <p>
+                    Gained practical exposure to the working environment
+                    and core telecommunications operations at BSNL.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- EDUCATION -->
+    <section id="education">
+
+        <div class="section-title">
+            <h2>My <span>Education</span></h2>
+            <p>Academic background</p>
+        </div>
+
+        <div class="education-box">
+
+            <h3>Bachelor of Engineering — Electronics and Communication Engineering</h3>
+
+            <p>
+                Third Year | Expected Graduation: 2028
+            </p>
+
+            <p>
+                Current GPA: 8.3
+            </p>
+
+            <br>
+
+            <h3>Higher Secondary Education</h3>
+
+            <p>
+                SSV Higher Secondary School
+            </p>
+
+            <p>
+                HSC — 83%
+            </p>
+
+            <br>
+
+            <h3>Secondary Education</h3>
+
+            <p>
+                SSV High School Girls High School
+            </p>
+
+            <p>
+                SSLC — 83.6%
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- CONTACT -->
+    <section id="contact" class="contact">
+
+        <div class="section-title">
+
+            <h2>Let's <span>Connect</span></h2>
+
+            <p>
+                I'm open to learning opportunities, projects,
+                internships, and professional connections.
+            </p>
+
+        </div>
+
+        <div class="contact-links">
+
+            <!-- Replace these with your actual links -->
+            <a href="https://github.com/Sruthi007916"
+               target="_blank"
+               class="btn primary">
+                GitHub
+            </a>
+
+            <a href="YOUR_LINKEDIN_URL"
+               target="_blank"
+               class="btn secondary">
+                LinkedIn
+            </a>
+
+            <a href="mailto:YOUR_EMAIL@gmail.com"
+               class="btn secondary">
+                Email
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+    <footer>
+
+        <p>
+            © 2026 Sruthi. Built with HTML & CSS.
+        </p>
+
+    </footer>
+
+</body>
+</html>
